@@ -1,7 +1,26 @@
+export interface UserProfile {
+  id: string;
+  prisoner_id: string;
+  username: string;
+  email: string;
+  is_admin: boolean;
+  is_banned: boolean;
+  premium_tier: 'free' | 'monthly' | 'yearly' | 'lifetime';
+  created_at: string;
+}
+
 export interface User {
   id: string;
   prisonerId: string;
-  codeword: string;
+  username: string;
+  email: string;
+  isAdmin: boolean;
+  isBanned: boolean;
+  premiumTier: 'free' | 'monthly' | 'yearly' | 'lifetime';
+  createdAt: string;
+}
+
+export interface GameState {
   level: number;
   location: string;
   cash: number;
@@ -11,15 +30,8 @@ export interface User {
   vitals: Vitals;
   job: string | null;
   equipment: Equipment;
-  inventory: string[];
+  inventory: Item[];
   cellItems: string[];
-  gang?: string;
-  isBanned: boolean;
-  isPremium: boolean;
-  premiumExpiry?: Date;
-  role: 'inmate' | 'guard' | 'admin' | 'superadmin';
-  createdAt: Date;
-  lastActive: Date;
 }
 
 export interface Stats {
