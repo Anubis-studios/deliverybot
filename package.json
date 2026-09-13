@@ -1,30 +1,28 @@
 {
+  "name": "prisonblock-v2",
   "private": true,
-  "version": "0.7.2",
-  "workspaces": [
-    "packages/app",
-    "packages/client",
-    "packages/firebase",
-    "packages/core",
-    "packages/deploybot",
-    "packages/slackbot",
-    "packages/run"
-  ],
+  "version": "2.0.0",
+  "type": "module",
   "scripts": {
-    "bump": "./bump.sh",
-    "start": "node ./scripts/build.js --watch",
-    "test": "node ./scripts/build.js --test",
-    "server": "node ./scripts/server.js",
-    "format": "prettier --write 'packages/*/src/**/*.{ts,js}'",
-    "build": "node ./scripts/build.js",
-    "push": "node ./scripts/build.js --publish"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
   },
-  "prettier": {
-    "trailingComma": "all"
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0",
+    "@supabase/supabase-js": "^2.39.0",
+    "stripe": "^14.9.0"
   },
   "devDependencies": {
-    "prettier": "1.19.1",
-    "smee-client": "^1.1.0",
-    "standard-version": "8.0.1"
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.8"
   }
 }
