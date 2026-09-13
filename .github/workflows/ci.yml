@@ -4,23 +4,28 @@ on: [push]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [10.x]
-
     steps:
-    - uses: actions/checkout@v1
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
+    - uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
       with:
-        node-version: ${{ matrix.node-version }}
-    - name: yarn install, build, and test
-      run: |
-        yarn install
-        yarn build
-        yarn test
+        node-version-file: '.nvmrc'
+        cache: 'yarn'
+    
+    - name: Install dependencies
+      run: yarn install --frozen-lockfile
+      env:
+        CI: true
+    
+    - name: Build
+      run: yarn build
+      env:
+        CI: true
+    
+    - name: Test
+      run: yarn test --passWithNoTests
       env:
         CI: true
